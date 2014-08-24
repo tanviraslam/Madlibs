@@ -20,7 +20,11 @@
 		<div ng-controller="MadlibController as madlib">
 			<div class="jumbotron">
 				<h2>Provide the following words: </h2>
-				<input type="text" ng-model=madlib.mName>
+				<select ng-model=madlib.gender>
+						<option>Male</option>
+						<option>Female</option>
+				</select>
+				<input type="text" ng-model=madlib.name>
 				<input type="text" ng-model=madlib.jobTitle>
 				<input type="text" ng-model=madlib.tediousTask>
 				<input type="text" ng-model=madlib.dirtyTask>
@@ -31,10 +35,16 @@
 				<input type="text" ng-model=madlib.hugeNumber>
 			</div>
 			<div class="madlib-text">
-				<p>
-					{{madlib.mName}} was a {{madlib.jobTitle}} who loved technology. Although he loved parts of his job, he absolutely hated  {{madlib.tediousTask}} and {{madlib.dirtyTask}}. So, {{madlib.mName}} met with his life mentor {{madlib.celebrity}} who told him to learn how to {{madlib.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{madlib.uselessSkill}} so he studied programming instead. 
+				<p ng-if="madlib.gender==='Male'">
+					{{madlib.name}} was a {{madlib.jobTitle}} who loved technology. Although he loved parts of his job, he absolutely hated  {{madlib.tediousTask}} and {{madlib.dirtyTask}}. So, {{madlib.mName}} met with his life mentor {{madlib.celebrity}} who told him to learn how to {{madlib.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{madlib.uselessSkill}} so he studied programming instead. 
 	 
 					What a great decision! With his new skills, {{madlib.mName}} built a(n) {{madlib.adjective}} robot named {{madlib.obnoxiousCelebrity}} that not only loved {{madlib.dirtyTask}} but did it {{madlib.hugeNumber}} faster. 
+
+				</p>
+				<p  ng-if="madlib.gender==='Female'">
+					{{madlib.name}} was a {{madlib.jobTitle}} who loved technology. Although she loved parts of her job, she absolutely hated  {{madlib.tediousTask}} and {{madlib.dirtyTask}}. So, {{madlib.mName}} met with her life mentor {{madlib.celebrity}} who told her to learn how to {{madlib.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{madlib.uselessSkill}} so she studied programming instead. 
+	 
+					What a great decision! With her new skills, {{madlib.mName}} built a(n) {{madlib.adjective}} robot named {{madlib.obnoxiousCelebrity}} that not only loved {{madlib.dirtyTask}} but did it {{madlib.hugeNumber}} faster. 
 
 				</p>
 			</div>

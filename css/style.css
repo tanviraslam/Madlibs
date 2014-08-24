@@ -4,8 +4,6 @@ header{
 	border-radius: 5px;
 }
 
-
-
 header img, header h2{
 	display: inline-block !important;
 	max-height: 90%;
@@ -37,8 +35,12 @@ header h2{
 	padding-right: 15%;
 }
 
-input{
+input, select{
 	margin: 10px 20px 10px 10px;
+}
+
+input:last-child{
+	margin-left: 14.2em;
 }
 
 .jumbotron{
@@ -48,4 +50,9 @@ input{
 .madlib-text{
 	font-family: 'Loved by the King', cursive;
 	font-size: 30px;
+}
+
+select{
+	width: 11.071em;
+	height: 1.85em;
 }

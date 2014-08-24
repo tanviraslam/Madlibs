@@ -2,7 +2,7 @@ var app = angular.module('madlibs', [])
 				 .constant('VERSION', 1.1);
 
 app.controller('MadlibController', function(){
-	this.mName = "Male Name";
+	this.name = "Name";
 	this.dirtyTask = "Dirty Task";
 	this.obnoxiousCelebrity = "Obnoxious Celebrity";
 	this.jobTitle = "Job Title";
@@ -11,4 +11,5 @@ app.controller('MadlibController', function(){
 	this.tediousTask = "Tedious Task";
 	this.uselessSkill = "Useless Skill";
 	this.adjective = "Adjective";
+	this.gender = "Male"
 });
