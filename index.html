@@ -8,48 +8,57 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="container">
-		<header>
-			<img src="img/mad-lib-happy-face.png">
-			<img src="img/ng-mad-libs-logo.png">
-			<h2>Automate This!</h2>
-		</header>
-		<div ng-controller="MadlibController as madlib">
-			<div class="jumbotron">
-				<h2>Provide the following words: </h2>
-				<select ng-model=madlib.gender>
-						<option>Male</option>
-						<option>Female</option>
-				</select>
-				<input type="text" ng-model=madlib.name>
-				<input type="text" ng-model=madlib.jobTitle>
-				<input type="text" ng-model=madlib.tediousTask>
-				<input type="text" ng-model=madlib.dirtyTask>
-				<input type="text" ng-model=madlib.celebrity>
-				<input type="text" ng-model=madlib.uselessSkill>
-				<input type="text" ng-model=madlib.adjective>
-				<input type="text" ng-model=madlib.obnoxiousCelebrity>
-				<input type="text" ng-model=madlib.hugeNumber>
-			</div>
-			<div class="madlib-text">
-				<p ng-if="madlib.gender==='Male'">
-					{{madlib.name}} was a {{madlib.jobTitle}} who loved technology. Although he loved parts of his job, he absolutely hated  {{madlib.tediousTask}} and {{madlib.dirtyTask}}. So, {{madlib.mName}} met with his life mentor {{madlib.celebrity}} who told him to learn how to {{madlib.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{madlib.uselessSkill}} so he studied programming instead. 
-	 
-					What a great decision! With his new skills, {{madlib.mName}} built a(n) {{madlib.adjective}} robot named {{madlib.obnoxiousCelebrity}} that not only loved {{madlib.dirtyTask}} but did it {{madlib.hugeNumber}} faster. 
+	<div class="container" ng-controller="MadlibController as madlib" >
+    <div ng-show="madlib.isForm">
+  		<header>
+  			<img src="img/mad-lib-happy-face.png">
+  			<img src="img/ng-mad-libs-logo.png">
+  			<h2>Automate This!</h2>
+  		</header>
 
-				</p>
-				<p  ng-if="madlib.gender==='Female'">
-					{{madlib.name}} was a {{madlib.jobTitle}} who loved technology. Although she loved parts of her job, she absolutely hated  {{madlib.tediousTask}} and {{madlib.dirtyTask}}. So, {{madlib.mName}} met with her life mentor {{madlib.celebrity}} who told her to learn how to {{madlib.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{madlib.uselessSkill}} so she studied programming instead. 
-	 
-					What a great decision! With her new skills, {{madlib.mName}} built a(n) {{madlib.adjective}} robot named {{madlib.obnoxiousCelebrity}} that not only loved {{madlib.dirtyTask}} but did it {{madlib.hugeNumber}} faster. 
-
-				</p>
+			<div class="jumbotron" >
+				<h2>Provide the following words </h2>
+        <form name="madlibInput" ng-submit="madlib.submit();submitted=true" novalidate>
+  				<select ng-model=madlib.data.gender>
+              <option value="" disabled selected>Gender</option>
+  						<option>Male</option>
+  						<option>Female</option>
+  				</select>
+  				<input type="text" placeholder=" Name" ng-model=madlib.data.name required>
+  				<input type="text" placeholder=" Job Title" ng-model=madlib.data.jobTitle required>
+  				<input type="text" placeholder=" Tedious Task" ng-model=madlib.data.tediousTask required>
+  				<input type="text" placeholder=" Dirty Task" ng-model=madlib.data.dirtyTask required>
+  				<input type="text" placeholder=" Celebrity" ng-model=madlib.data.celebrity required>
+  				<input type="text" placeholder=" Useless Skill" ng-model=madlib.data.uselessSkill required>
+  				<input type="text" placeholder=" Adjective" ng-model=madlib.data.adjective required>
+  				<input type="text" placeholder=" Obnoxious Celebrity" ng-model=madlib.data.obnoxiousCelebrity required>
+  				<input type="number" placeholder=" Huge Number" title="Enter a number only" ng-model=madlib.data.hugeNumber required><br>
+          <input class="btn btn-large btn-primary" ng-class="{'disabled': madlibInput.$invalid}" type="submit" value="Generate My Madlib">
+        </form>
 			</div>
-		</div>
+    </div>
+
+  	<div class="madlib-text" ng-show="!madlib.isForm">
+  		<p ng-if="madlib.data.gender==='Male'&&submitted">
+  			{{madlib.data.name}} was a {{madlib.data.jobTitle}} who loved technology. Although he loved parts of his job, he absolutely hated  {{madlib.data.tediousTask}} and {{madlib.data.dirtyTask}}. So, {{madlib.data.mName}} met with his life mentor {{madlib.data.celebrity}} who told him to learn how to {{madlib.data.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{madlib.data.uselessSkill}} so he studied programming instead. 
+
+  			What a great decision! With his new skills, {{madlib.data.mName}} built a(n) {{madlib.data.adjective}} robot named {{madlib.data.obnoxiousCelebrity}} that not only loved {{madlib.data.dirtyTask}} but did it {{madlib.data.hugeNumber}} times faster. 
+
+  		</p>
+  		<p  ng-if="madlib.data.gender==='Female'&&submitted">
+  			{{madlib.data.name}} was a {{madlib.data.jobTitle}} who loved technology. Although she loved parts of her job, she absolutely hated  {{madlib.data.tediousTask}} and {{madlib.data.dirtyTask}}. So, {{madlib.data.mName}} met with her life mentor {{madlib.data.celebrity}} who told her to learn how to {{madlib.data.uselessSkill}} with Thinkful. Thinkful didn't offer a course on {{madlib.data.uselessSkill}} so she studied programming instead. 
+
+  			What a great decision! With her new skills, {{madlib.data.mName}} built a(n) {{madlib.data.adjective}} robot named {{madlib.data.obnoxiousCelebrity}} that not only loved {{madlib.data.dirtyTask}} but did it {{madlib.data.hugeNumber}} times faster. 
+
+  		</p>
+      <button class="btn btn-large btn-success" ng-click="madlib.reset()">Start Over</button>
+  	</div>
 	</div>
+  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
