@@ -2,14 +2,38 @@ var app = angular.module('madlibs', [])
 				 .constant('VERSION', 1.1);
 
 app.controller('MadlibController', function(){
-	this.name = "Name";
-	this.dirtyTask = "Dirty Task";
-	this.obnoxiousCelebrity = "Obnoxious Celebrity";
-	this.jobTitle = "Job Title";
-	this.celebrity = "Celebrity";
-	this.hugeNumber = "Huge Number";
-	this.tediousTask = "Tedious Task";
-	this.uselessSkill = "Useless Skill";
-	this.adjective = "Adjective";
-	this.gender = "Male"
+  this.data = {
+    name : "",
+    dirtyTask : "",
+    obnoxiousCelebrity : "", 
+    jobTitle : "", 
+    celebrity : "", 
+    hugeNumber : "", 
+    tediousTask : "", 
+    uselessSkill : "", 
+    adjective : "", 
+    gender : ""
+  };
+
+  this.isForm = true;
+
+  this.submit = function(){
+    this.isForm = false;
+  };
+
+  this.reset = function(){
+      this.isForm = true;
+      this.data = {
+      name : "",
+      dirtyTask : "",
+      obnoxiousCelebrity : "", 
+      jobTitle : "", 
+      celebrity : "", 
+      hugeNumber : "", 
+      tediousTask : "", 
+      uselessSkill : "", 
+      adjective : "", 
+      gender : ""
+    };
+  };
 });
