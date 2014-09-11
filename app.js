@@ -1,4 +1,4 @@
-var app = angular.module('madlibs', [])
+var app = angular.module('madlibs', ['ngAnimate'])
 				 .constant('VERSION', 1.1);
 
 app.controller('MadlibController', function(){

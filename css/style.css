@@ -83,3 +83,35 @@ input[type="submit"]{
 form{
 	margin: 0 auto;
 }
+
+
+/*Animation Code*/
+.madlib-text.ng-hide-add,.madlib-text.ng-hide-remove,.madlib-generator.ng-hide-add,.madlib-generator.ng-hide-remove {
+  display:block!important;
+}
+
+.madlib-text.ng-hide-add{
+  -webkit-transition: opacity linear 0.2s;
+  transition: opacity linear 0.2s; 
+}
+
+.madlib-text.ng-hide-remove{
+  -webkit-transition: opacity linear 1.5s;
+  transition: opacity linear 1.5s; 
+}
+
+.madlib-generator.ng-hide-add{
+   -webkit-transition: opacity linear 0.2s;
+    transition: opacity linear 0.2s; 
+}
+
+.madlib-generator.ng-hide-remove{
+   -webkit-transition: opacity linear 1.5s;
+    transition: opacity linear 1.5s; 
+}
+
+.madlib-text.ng-hide, .madlib-generator.ng-hide{
+  opacity: 0;
+}
+
+
